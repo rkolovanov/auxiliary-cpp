@@ -5,7 +5,7 @@ testSourceTemplateFilePath = "class-gtest.cpp.template"
 
 projectName = "auxiliary-cpp"
 projectNamespace = "Auxiliary"
-projectDescription = "Библиотека вспомогательных решений"
+projectDescription = "Библиотека вспомогательных решений С++"
 
 namespaceName = input("Название пространства имен: ")
 className = input("Название класса: ")

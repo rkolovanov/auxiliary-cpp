@@ -11,12 +11,12 @@
 
 namespace ${projectNamespace}
 {
-    namespace ${namespaceName}
+  namespace ${namespaceName}
+  {
+    class ${className}
     {
-        class ${className}
-        {
-        }; // class ${className}
-    } // namespace ${namespaceName}
+    }; // class ${className}
+  } // namespace ${namespaceName}
 } // namespace ${projectNamespace}
 
 #endif // ${className}_H_${classId}

@@ -9,9 +9,9 @@
 
 namespace ${projectNamespace}
 {
-    namespace ${namespaceName}
-    {
-    } // namespace ${namespaceName}
+  namespace ${namespaceName}
+  {
+  } // namespace ${namespaceName}
 } // namespace ${projectNamespace}
 
 /*** End of file ${sourceFileName} ***/
