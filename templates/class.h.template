@@ -1,0 +1,23 @@
+/**
+ * \proj Библиотека вспомогательных решений (${projectName})
+ * \file Заголовочный файл ${className}.h
+ *
+ * Copyright (c) ${year} Rodion Kolovanov
+ */
+
+#ifndef ${className}_H_${classId}
+#define ${className}_H_${classId}
+
+namespace ${projectNamespace}
+{
+    namespace ${namespaceName}
+    {
+        class ${className}
+        {
+        }; // class ${className}
+    } // namespace ${namespaceName}
+} // namespace ${projectNamespace}
+
+#endif // ${className}_H_${classId}
+
+/*** End of file ${className}.h ***/

@@ -1,0 +1,17 @@
+/**
+ * \proj Библиотека вспомогательных решений (${projectName})
+ * \file Файл исходного кода ${className}.cpp
+ *
+ * Copyright (c) ${year} Rodion Kolovanov
+ */
+
+#include "${className}.h"
+
+namespace ${projectNamespace}
+{
+    namespace ${namespaceName}
+    {
+    } // namespace ${namespaceName}
+} // namespace ${projectNamespace}
+
+/*** End of file ${className}.cpp ***/
