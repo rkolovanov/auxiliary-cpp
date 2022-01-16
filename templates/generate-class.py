@@ -1,33 +1,43 @@
-import datetime
-import uuid
+from datetime import datetime
 from string import Template
+from uuid import uuid4
+
+headerTemplateFilePath = "class.h.template"
+sourceTemplateFilePath = "class.cpp.template"
 
 projectName = "auxiliary-cpp"
 projectNamespace = "Auxiliary"
+projectDescription = "Библиотека вспомогательных решений"
 
 namespaceName = input("Название пространства имен: ")
 className = input("Название класса: ")
-classId = str(uuid.uuid4()).upper().replace("-", "_")
+classId = str(uuid4()).upper().replace("-", "_")
+headerFileName = "{}.h".format(className)
+sourceFileName = "{}.cpp".format(className)
 
-values = {
+templateValues = {
     "projectName": projectName,
     "projectNamespace": projectNamespace,
+    "projectDescription": projectDescription,
     "namespaceName": namespaceName,
     "className": className,
     "classId": classId,
-    "year": datetime.datetime.now().year
+    "classHeaderIncludePath": "{}/{}/{}.h".format(projectNamespace.lower(), namespaceName.lower(), className),
+    "year": datetime.now().year,
+    "headerFileName": headerFileName,
+    "sourceFileName": sourceFileName
 }
 
-with open("class.h.template", "r") as fileTemplate:
-    template = Template(fileTemplate.read())
-    content = template.substitute(values)
+with open(headerTemplateFilePath, "r") as templateFile:
+    template = Template(templateFile.read())
+    content = template.substitute(templateValues)
 
-    with open("{}.h".format(className), "w") as outputFile:
+    with open(headerFileName, "w") as outputFile:
         outputFile.write(content)
 
-with open("class.cpp.template", "r") as fileTemplate:
-    template = Template(fileTemplate.read())
-    content = template.substitute(values)
+with open(sourceTemplateFilePath, "r") as templateFile:
+    template = Template(templateFile.read())
+    content = template.substitute(templateValues)
 
-    with open("{}.cpp".format(className), "w") as outputFile:
+    with open(sourceFileName, "w") as outputFile:
         outputFile.write(content)

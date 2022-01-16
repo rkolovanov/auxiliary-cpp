@@ -1,11 +1,11 @@
 /**
- * \proj Библиотека вспомогательных решений (${projectName})
- * \file Файл исходного кода ${className}.cpp
+ * \proj ${projectDescription} (${projectName})
+ * \file Файл исходного кода ${sourceFileName}
  *
  * Copyright (c) ${year} Rodion Kolovanov
  */
 
-#include "${className}.h"
+#include <${classHeaderIncludePath}>
 
 namespace ${projectNamespace}
 {
@@ -14,4 +14,4 @@ namespace ${projectNamespace}
     } // namespace ${namespaceName}
 } // namespace ${projectNamespace}
 
-/*** End of file ${className}.cpp ***/
+/*** End of file ${sourceFileName} ***/

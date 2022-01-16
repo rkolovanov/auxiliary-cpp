@@ -1,6 +1,7 @@
 /**
- * \proj Библиотека вспомогательных решений (${projectName})
- * \file Заголовочный файл ${className}.h
+ * \proj ${projectDescription} (${projectName})
+ * \file Заголовочный файл ${headerFileName}
+ * \brief Класс ${className}
  *
  * Copyright (c) ${year} Rodion Kolovanov
  */
@@ -20,4 +21,4 @@ namespace ${projectNamespace}
 
 #endif // ${className}_H_${classId}
 
-/*** End of file ${className}.h ***/
+/*** End of file ${headerFileName} ***/
