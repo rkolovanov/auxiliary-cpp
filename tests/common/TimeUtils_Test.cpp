@@ -6,7 +6,7 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#include "auxiliary/common/TimeUtils.h"
+#include <auxiliary/common/TimeUtils.h>
 #include <gtest/gtest.h>
 
 using namespace Auxiliary::Common;
