@@ -28,7 +28,7 @@ foreach(MODULE ${PROJECT_MODULES})
 endforeach()
 
 if(WITH_TESTS)
-    find_package(GTest REQUIRED)
+    find_package(GTest)
     include_directories(${GTEST_INCLUDE_DIRS})
 
     enable_testing()
