@@ -47,5 +47,3 @@ namespace Auxiliary
     }
   } // namespace Common
 } // namespace Auxiliary
-
-/*** End of file StorageContainer.cpp ***/

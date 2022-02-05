@@ -6,8 +6,8 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#ifndef AbstractStorage_H_026E6F60_9F3A_4E04_9DCA_518215EE2A26
-#define AbstractStorage_H_026E6F60_9F3A_4E04_9DCA_518215EE2A26
+#ifndef AUXILIARY_COMMON_ABSTRACT_STORAGE_H
+#define AUXILIARY_COMMON_ABSTRACT_STORAGE_H
 
 #include <auxiliary/common/StorageContainer.h>
 
@@ -26,6 +26,4 @@ namespace Auxiliary
   } // namespace Common
 } // namespace Auxiliary
 
-#endif // AbstractStorage_H_026E6F60_9F3A_4E04_9DCA_518215EE2A26
-
-/*** End of file AbstractStorage.h ***/
+#endif // AUXILIARY_COMMON_ABSTRACT_STORAGE_H

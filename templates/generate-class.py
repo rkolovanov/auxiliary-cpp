@@ -1,6 +1,6 @@
 from datetime import datetime
 from string import Template
-from uuid import uuid4
+from helpers import to_header_format
 
 headerTemplateFilePath = "class.h.template"
 sourceTemplateFilePath = "class.cpp.template"
@@ -11,9 +11,9 @@ projectDescription = "Библиотека вспомогательных реш
 
 namespaceName = input("Название пространства имен: ")
 className = input("Название класса: ")
-classId = str(uuid4()).upper().replace("-", "_")
 headerFileName = "{}.h".format(className)
 sourceFileName = "{}.cpp".format(className)
+header = to_header_format("{}_{}_{}_H".format(projectNamespace, namespaceName, className))
 
 templateValues = {
     "projectName": projectName,
@@ -21,11 +21,11 @@ templateValues = {
     "projectDescription": projectDescription,
     "namespaceName": namespaceName,
     "className": className,
-    "classId": classId,
     "classHeaderIncludePath": "{}/{}/{}.h".format(projectNamespace.lower(), namespaceName.lower(), className),
     "year": datetime.now().year,
     "headerFileName": headerFileName,
-    "sourceFileName": sourceFileName
+    "sourceFileName": sourceFileName,
+    "header": header
 }
 
 with open(headerTemplateFilePath, "r") as templateFile:

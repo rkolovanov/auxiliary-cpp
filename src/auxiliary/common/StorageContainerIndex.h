@@ -6,8 +6,8 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#ifndef StorageContainerIndex_H_9879412F_5247_4A89_BF15_D18D173452B7
-#define StorageContainerIndex_H_9879412F_5247_4A89_BF15_D18D173452B7
+#ifndef AUXILIARY_COMMON_STORAGE_CONTAINER_INDEX_H
+#define AUXILIARY_COMMON_STORAGE_CONTAINER_INDEX_H
 
 #include <auxiliary/common/StorageCategory.h>
 
@@ -23,6 +23,4 @@ namespace Auxiliary
   } // namespace Common
 } // namespace Auxiliary
 
-#endif // StorageContainerIndex_H_9879412F_5247_4A89_BF15_D18D173452B7
-
-/*** End of file StorageContainerIndex.h ***/
+#endif // AUXILIARY_COMMON_STORAGE_CONTAINER_INDEX_H

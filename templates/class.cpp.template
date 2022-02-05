@@ -13,5 +13,3 @@ namespace ${projectNamespace}
   {
   } // namespace ${namespaceName}
 } // namespace ${projectNamespace}
-
-/*** End of file ${sourceFileName} ***/

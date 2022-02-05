@@ -6,8 +6,8 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#ifndef TimeUtils_H_A38B9EF1_14FC_4247_AB5A_656F810C6E79
-#define TimeUtils_H_A38B9EF1_14FC_4247_AB5A_656F810C6E79
+#ifndef AUXILIARY_COMMON_TIME_UTILS_H
+#define AUXILIARY_COMMON_TIME_UTILS_H
 
 #include <QDateTime>
 #include <boost/date_time.hpp>
@@ -24,6 +24,4 @@ namespace Auxiliary
   } // namespace Common
 } // namespace Auxiliary
 
-#endif // TimeUtils_H_A38B9EF1_14FC_4247_AB5A_656F810C6E79
-
-/*** End of file TimeUtils.h ***/
+#endif // AUXILIARY_COMMON_TIME_UTILS_H

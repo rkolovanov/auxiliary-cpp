@@ -6,8 +6,8 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#ifndef StorageCategory_H_03F19D7A_AC52_4F39_B8F1_DA4E9C852359
-#define StorageCategory_H_03F19D7A_AC52_4F39_B8F1_DA4E9C852359
+#ifndef AUXILIARY_COMMON_STORAGE_CATEGORY_H
+#define AUXILIARY_COMMON_STORAGE_CATEGORY_H
 
 #include <QStringList>
 #include <memory>
@@ -38,6 +38,4 @@ namespace Auxiliary
   } // namespace Common
 } // namespace Auxiliary
 
-#endif // StorageCategory_H_03F19D7A_AC52_4F39_B8F1_DA4E9C852359
-
-/*** End of file StorageCategory.h ***/
+#endif // AUXILIARY_COMMON_STORAGE_CATEGORY_H

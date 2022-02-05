@@ -6,8 +6,8 @@
  * Copyright (c) ${year} Rodion Kolovanov
  */
 
-#ifndef ${className}_H_${classId}
-#define ${className}_H_${classId}
+#ifndef ${header}
+#define ${header}
 
 namespace ${projectNamespace}
 {
@@ -19,6 +19,4 @@ namespace ${projectNamespace}
   } // namespace ${namespaceName}
 } // namespace ${projectNamespace}
 
-#endif // ${className}_H_${classId}
-
-/*** End of file ${headerFileName} ***/
+#endif // ${header}
