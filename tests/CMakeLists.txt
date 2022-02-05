@@ -1,1 +1,2 @@
-add_subdirectory(common)
+add_subdirectory(auto)
+add_subdirectory(manual)

@@ -9,12 +9,12 @@
 #ifndef AUXILIARY_COMMON_STORAGE_CONTAINER_INDEX_H
 #define AUXILIARY_COMMON_STORAGE_CONTAINER_INDEX_H
 
-#include <auxiliary/common/StorageCategory.h>
-
 namespace Auxiliary
 {
   namespace Common
   {
+    class StorageCategory;
+
     struct StorageContainerIndex
     {
       QString m_name;

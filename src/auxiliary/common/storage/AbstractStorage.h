@@ -9,12 +9,13 @@
 #ifndef AUXILIARY_COMMON_ABSTRACT_STORAGE_H
 #define AUXILIARY_COMMON_ABSTRACT_STORAGE_H
 
-#include <auxiliary/common/StorageContainer.h>
-
 namespace Auxiliary
 {
   namespace Common
   {
+    struct StorageContainerIndex;
+    class StorageContainer;
+
     class AbstractStorage
     {
     public:

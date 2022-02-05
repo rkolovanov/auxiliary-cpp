@@ -5,7 +5,7 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#include <auxiliary/common/StorageCategory.h>
+#include <auxiliary/common/storage/StorageCategory.h>
 
 namespace
 {

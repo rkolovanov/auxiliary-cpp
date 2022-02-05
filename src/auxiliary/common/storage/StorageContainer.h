@@ -9,8 +9,8 @@
 #ifndef AUXILIARY_COMMON_STORAGE_CONTAINER_H
 #define AUXILIARY_COMMON_STORAGE_CONTAINER_H
 
-#include <auxiliary/common/StorageCategory.h>
-#include <auxiliary/common/StorageContainerIndex.h>
+#include "StorageCategory.h"
+#include "StorageContainerIndex.h"
 #include <QVariant>
 
 namespace Auxiliary

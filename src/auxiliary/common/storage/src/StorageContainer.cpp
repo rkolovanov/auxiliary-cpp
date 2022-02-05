@@ -5,7 +5,7 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#include "auxiliary/common/StorageContainer.h"
+#include <auxiliary/common/storage/StorageContainer.h>
 
 namespace Auxiliary
 {
