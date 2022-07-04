@@ -35,3 +35,5 @@ if(WITH_TESTS)
     enable_testing()
     add_subdirectory(tests)
 endif()
+
+add_subdirectory(sandbox)

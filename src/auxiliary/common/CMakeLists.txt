@@ -7,9 +7,9 @@ set(HEADERS storage/AbstractStorage.h
         storage/StorageCategory.h
         storage/StorageContainer.h
         storage/StorageContainerIndex.h
-        TimeUtils.h)
+        TimeUtils.h ../../../sandbox/networking/client.cpp ../../../sandbox/networking/server.cpp)
 
-add_library(auxiliary-cpp-common ${SOURCES} ${HEADERS})
+add_library(auxiliary-cpp-common SHARED ${SOURCES} ${HEADERS})
 target_link_libraries(auxiliary-cpp-common Qt5::Core Boost::date_time)
 
 install(FILES ${HEADERS} DESTINATION ~/install COMPONENT devel)
