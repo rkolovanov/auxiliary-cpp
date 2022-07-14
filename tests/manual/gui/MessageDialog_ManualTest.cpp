@@ -7,13 +7,13 @@
  */
 
 #include <auxiliary/gui/MessageDialog.h>
-#include <QCoreApplication>
+#include <QApplication>
 
 using namespace Auxiliary::Gui;
 
 int main(int argc, char** argv)
 {
-  QCoreApplication app(argc, argv);
+  QApplication app(argc, argv);
 
   MessageDialog messageDialog;
   messageDialog.show();

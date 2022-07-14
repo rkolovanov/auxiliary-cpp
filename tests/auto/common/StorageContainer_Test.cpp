@@ -6,7 +6,7 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#include "auxiliary/common/storage/StorageContainer.h"
+#include <auxiliary/common/storage/StorageContainer.h>
 #include <QDateTime>
 #include <gtest/gtest.h>
 
