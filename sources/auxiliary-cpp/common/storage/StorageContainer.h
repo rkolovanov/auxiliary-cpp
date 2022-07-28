@@ -33,7 +33,7 @@ namespace Auxiliary
     private:
       StorageContainerIndex m_index;
       QVariant m_data;
-    }; // class StorageContainer
+    };
   } // namespace Common
 } // namespace Auxiliary
 

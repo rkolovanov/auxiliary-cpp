@@ -15,18 +15,12 @@ namespace Auxiliary
 {
   namespace Common
   {
-    template<size_t N, class T = double>
-    class VectorBase
+    class Vector
     {
     public:
-      VectorBase() = default;
-
-    private:
-      T m_data[N];
-    }; // class Vector
-
-    using Vector2D = VectorBase<2, double>;
-    using Vector3D = VectorBase<3, double>;
+      virtual ~Vector() = 0;
+      virtual double getLength() const = 0;
+    };
   } // namespace Common
 } // namespace Auxiliary
 

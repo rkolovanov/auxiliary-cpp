@@ -23,7 +23,7 @@ namespace Auxiliary
       virtual void setContainer(const StorageContainer& index) = 0;
       virtual void save() = 0;
       virtual void reload() = 0;
-    }; // class AbstractStorage
+    };
   } // namespace Common
 } // namespace Auxiliary
 

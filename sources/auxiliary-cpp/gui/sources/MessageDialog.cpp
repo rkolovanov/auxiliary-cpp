@@ -5,8 +5,8 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#include "ui_MessageDialog.h"
-#include <auxiliary/gui/MessageDialog.h>
+#include <ui_MessageDialog.h>
+#include <auxiliary-cpp/gui/MessageDialog.h>
 
 namespace Auxiliary
 {

@@ -31,7 +31,7 @@ namespace Auxiliary
 
     private:
       const std::unique_ptr<Ui::MessageDialog> m_ui;
-    }; // class MessageDialog
+    };
   } // namespace Gui
 } // namespace Auxiliary
 

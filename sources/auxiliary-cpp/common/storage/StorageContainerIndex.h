@@ -19,7 +19,7 @@ namespace Auxiliary
     {
       QString m_name;
       StorageCategory m_category;
-    }; // struct StorageContainerIndex
+    };
   } // namespace Common
 } // namespace Auxiliary
 

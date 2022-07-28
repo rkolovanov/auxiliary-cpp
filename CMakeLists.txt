@@ -5,10 +5,12 @@ project(auxiliary-cpp
         HOMEPAGE_URL "https://github.com/rkolovanov/auxiliary-cpp"
         LANGUAGES CXX)
 
+option(WITH_SANDBOX "С песочницей" OFF)
+option(WITH_MANUAL_TESTS "С ручными тестами" OFF)
 option(WITH_TESTS "С тестами" ON)
 
 set(CMAKE_CXX_STANDARD 23)
-set(PROJECT_MODULES common gui)
+set(PROJECT_MODULES common gui math networking)
 
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
@@ -21,22 +23,18 @@ find_package(Boost COMPONENTS chrono date_time thread REQUIRED)
 find_package(Qt5Core)
 find_package(Qt5Widgets)
 
+include(GNUInstallDirs)
+
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${Qt5Core_INCLUDE_DIRS})
 include_directories(${CMAKE_SOURCE_DIR}/sources)
 
-add_subdirectory(sandbox)
-
 foreach(MODULE ${PROJECT_MODULES})
-    add_subdirectory(sources/auxiliary/${MODULE})
+    add_subdirectory(sources/${PROJECT_NAME}/${MODULE})
 endforeach()
 
-if(WITH_TESTS)
-    find_package(GTest)
-    include_directories(${GTEST_INCLUDE_DIRS})
-    enable_testing()
-    add_subdirectory(tests)
-endif()
+add_subdirectory(sandbox)
+add_subdirectory(tests)
 
 # CPack
 
@@ -51,13 +49,12 @@ set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
 
 set(CPACK_VERBATIM_VARIABLES TRUE)
 set(CPACK_OUTPUT_FILE_PREFIX "${CMAKE_BINARY_DIR}/packages")
-set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/some")
+set(CPACK_PACKAGING_INSTALL_PREFIX "")
 
 set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
-#set(CPACK_DEBIAN_PACKAGE_DEPENDS)
 
 set(CPACK_DEBIAN_PACKAGE_DESCRIPTION ${PROJECT_DESCRIPTION})
-set(CPACK_DEB_COMPONENT_INSTALL YES)
+set(CPACK_DEB_COMPONENT_INSTALL ON)
 
 add_custom_target(pack-deb
         COMMAND cpack -G DEB

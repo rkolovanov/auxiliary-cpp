@@ -21,7 +21,7 @@ templateValues = {
     "projectDescription": projectDescription,
     "namespaceName": namespaceName,
     "className": className,
-    "classHeaderIncludePath": "{}/{}/{}.h".format(projectNamespace.lower(), namespaceName.lower(), className),
+    "classHeaderIncludePath": "{}/{}/{}.h".format(projectName.lower(), namespaceName.lower(), className),
     "year": datetime.now().year,
     "headerFileName": headerFileName,
     "sourceFileName": sourceFileName,

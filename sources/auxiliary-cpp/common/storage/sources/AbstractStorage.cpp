@@ -5,7 +5,7 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#include <auxiliary/common/storage/AbstractStorage.h>
+#include <auxiliary-cpp/common/storage/AbstractStorage.h>
 
 namespace Auxiliary
 {

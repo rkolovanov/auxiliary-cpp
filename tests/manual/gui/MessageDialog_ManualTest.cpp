@@ -6,7 +6,7 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#include <auxiliary/gui/MessageDialog.h>
+#include <auxiliary-cpp/gui/MessageDialog.h>
 #include <QApplication>
 
 using namespace Auxiliary::Gui;

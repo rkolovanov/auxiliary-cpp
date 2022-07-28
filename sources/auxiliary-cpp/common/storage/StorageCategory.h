@@ -34,7 +34,7 @@ namespace Auxiliary
 
       QChar m_separator;
       StringListPointer m_topics;
-    }; // class StorageCategory
+    };
   } // namespace Common
 } // namespace Auxiliary
 
