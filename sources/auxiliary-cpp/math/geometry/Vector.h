@@ -9,7 +9,7 @@
 #ifndef AUXILIARY_COMMON_VECTOR_H
 #define AUXILIARY_COMMON_VECTOR_H
 
-#include <cstddef>
+#include <cstdint>
 
 namespace Auxiliary
 {
@@ -19,7 +19,10 @@ namespace Auxiliary
     {
     public:
       virtual ~Vector() = 0;
+      virtual void negate() = 0;
+      virtual void normalize() = 0;
       virtual double getLength() const = 0;
+      virtual uint32_t
     };
   } // namespace Common
 } // namespace Auxiliary
