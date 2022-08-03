@@ -13,7 +13,7 @@ set(HEADERS
         )
 
 add_library(auxiliary-cpp-common SHARED ${SOURCES} ${HEADERS})
-target_link_libraries(auxiliary-cpp-common Qt5::Core Boost::date_time)
+target_link_libraries(auxiliary-cpp-common Qt6::Core Boost::date_time)
 
 install(TARGETS auxiliary-cpp-common LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
 install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR} COMPONENT dev)
