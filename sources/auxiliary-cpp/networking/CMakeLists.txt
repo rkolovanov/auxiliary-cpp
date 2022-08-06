@@ -1,13 +1,14 @@
+cmake_path(RELATIVE_PATH CMAKE_CURRENT_SOURCE_DIR BASE_DIRECTORY ${CMAKE_SOURCE_DIR}/sources
+           OUTPUT_VARIABLE RELATIVE_MODULE_PATH)
+
 set(SOURCES
-        messages/sources/Message.cpp
-        )
+    messages/sources/Message.cpp)
 
 set(HEADERS
-        messages/Message.h
-        )
+    messages/Message.h)
 
-add_library(auxiliary-cpp-networking SHARED ${SOURCES} ${HEADERS})
-target_link_libraries(auxiliary-cpp-networking pthread)
+add_library(${MODULE_TARGET} SHARED ${SOURCES} ${HEADERS})
+target_link_libraries(${MODULE_TARGET} PRIVATE pthread)
 
-install(TARGETS auxiliary-cpp-networking LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
-install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR} COMPONENT dev)
+install(TARGETS ${MODULE_TARGET} LIBRARY DESTINATION ${CBS_LIB_INSTALL_PATH})
+install(FILES ${HEADERS} DESTINATION ${CBS_INCLUDE_INSTALL_PATH}/${RELATIVE_MODULE_PATH} COMPONENT dev)

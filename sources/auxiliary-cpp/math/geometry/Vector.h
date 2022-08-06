@@ -6,25 +6,24 @@
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#ifndef AUXILIARY_COMMON_VECTOR_H
-#define AUXILIARY_COMMON_VECTOR_H
+#ifndef SOURCES_AUXILIARY_CPP_MATH_GEOMETRY_VECTOR_H
+#define SOURCES_AUXILIARY_CPP_MATH_GEOMETRY_VECTOR_H
 
 #include <cstdint>
 
-namespace Auxiliary
+namespace Auxiliary::Math
 {
-  namespace Common
+  class Vector
   {
-    class Vector
-    {
-    public:
-      virtual ~Vector() = 0;
-      virtual void negate() = 0;
-      virtual void normalize() = 0;
-      virtual double getLength() const = 0;
-      virtual uint32_t
-    };
-  } // namespace Common
-} // namespace Auxiliary
+  public:
+    virtual ~Vector() = 0;
 
-#endif // AUXILIARY_COMMON_VECTOR_H
+    virtual void negate() = 0;
+
+    virtual void normalize() = 0;
+
+    virtual double getLength() const = 0;
+  };
+} // namespace Auxiliary::Math
+
+#endif // SOURCES_AUXILIARY_CPP_MATH_GEOMETRY_VECTOR_H

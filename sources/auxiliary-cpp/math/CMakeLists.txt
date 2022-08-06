@@ -1,12 +1,15 @@
+cmake_path(RELATIVE_PATH CMAKE_CURRENT_SOURCE_DIR BASE_DIRECTORY ${CMAKE_SOURCE_DIR}/sources
+           OUTPUT_VARIABLE RELATIVE_MODULE_PATH)
+
 set(SOURCES
-        )
+    geometry/sources/Vector3D.cpp)
 
 set(HEADERS
-        geometry/Vector.h
-        )
+    geometry/Vector.h
+    geometry/Vector3D.h)
 
-add_library(auxiliary-cpp-math SHARED ${SOURCES} ${HEADERS})
-target_link_libraries(auxiliary-cpp-math pthread)
+add_library(${MODULE_TARGET} SHARED ${SOURCES} ${HEADERS})
+#target_link_libraries(${MATH_MODULE_TARGET} PRIVATE Qt6::Core Qt6::Widgets)
 
-install(TARGETS auxiliary-cpp-math LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
-install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR} COMPONENT dev)
+install(TARGETS ${MODULE_TARGET} LIBRARY DESTINATION ${CBS_LIB_INSTALL_PATH})
+install(FILES ${HEADERS} DESTINATION ${CBS_INCLUDE_INSTALL_PATH}/${RELATIVE_MODULE_PATH} COMPONENT dev)

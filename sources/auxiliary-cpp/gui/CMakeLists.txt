@@ -1,11 +1,14 @@
+cmake_path(RELATIVE_PATH CMAKE_CURRENT_SOURCE_DIR BASE_DIRECTORY ${CMAKE_SOURCE_DIR}/sources
+           OUTPUT_VARIABLE RELATIVE_MODULE_PATH)
+
 set(SOURCES sources/MessageDialog.cpp)
 
 set(HEADERS MessageDialog.h)
 
 set(FORMS sources/MessageDialog.ui)
 
-add_library(auxiliary-cpp-gui SHARED ${SOURCES} ${HEADERS} ${FORMS})
-target_link_libraries(auxiliary-cpp-gui Qt6::Core Qt6::Widgets)
+add_library(${MODULE_TARGET} SHARED ${SOURCES} ${HEADERS} ${FORMS})
+target_link_libraries(${MODULE_TARGET} PRIVATE Qt6::Core Qt6::Widgets)
 
-install(TARGETS auxiliary-cpp-gui LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
-install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR} COMPONENT dev)
+install(TARGETS ${MODULE_TARGET} LIBRARY DESTINATION ${CBS_LIB_INSTALL_PATH})
+install(FILES ${HEADERS} DESTINATION ${CBS_INCLUDE_INSTALL_PATH}/${RELATIVE_MODULE_PATH} COMPONENT dev)

@@ -1,3 +1,7 @@
+"""
+    GenerateClass script.
+"""
+
 from datetime import datetime
 from string import Template
 from helpers import to_header_format

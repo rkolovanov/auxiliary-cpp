@@ -1,15 +1,15 @@
 /**
- * \proj Библиотека вспомогательных решений С++ (auxiliary-cpp)
+ * \proj Библиотека вспомогательных компонентов С++ (auxiliary-cpp)
  * \file Заголовочный файл MessageDialog.h
  * \brief Класс MessageDialog
  *
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#ifndef AUXILIARY_GUI_MESSAGE_DIALOG_H
-#define AUXILIARY_GUI_MESSAGE_DIALOG_H
+#ifndef SOURCES_AUXILIARY_CPP_GUI_MESSAGEDIALOG_H
+#define SOURCES_AUXILIARY_CPP_GUI_MESSAGEDIALOG_H
 
-#include <QtWidgets/QDialog>
+#include <QDialog>
 #include <memory>
 
 namespace Ui
@@ -17,22 +17,20 @@ namespace Ui
   class MessageDialog;
 } // namespace Ui
 
-namespace Auxiliary
+namespace Auxiliary::Gui
 {
-  namespace Gui
+  class MessageDialog: public QDialog
   {
-    class MessageDialog: public QDialog
-    {
-      Q_OBJECT
+  Q_OBJECT
 
-    public:
-      explicit MessageDialog(QWidget* parent = nullptr);
-      ~MessageDialog() override;
+  public:
+    explicit MessageDialog(QWidget* parent = nullptr);
 
-    private:
-      const std::unique_ptr<Ui::MessageDialog> m_ui;
-    };
-  } // namespace Gui
-} // namespace Auxiliary
+    ~MessageDialog() override;
 
-#endif // AUXILIARY_GUI_MESSAGE_DIALOG_H
+  private:
+    const std::unique_ptr<Ui::MessageDialog> m_ui;
+  };
+} // namespace Auxiliary::Gui
+
+#endif // SOURCES_AUXILIARY_CPP_GUI_MESSAGEDIALOG_H

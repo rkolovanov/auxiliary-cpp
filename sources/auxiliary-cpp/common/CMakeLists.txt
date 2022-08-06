@@ -1,19 +1,9 @@
-set(SOURCES
-        storage/sources/AbstractStorage.cpp
-        storage/sources/StorageCategory.cpp
-        storage/sources/StorageContainer.cpp
-        )
+cmake_path(RELATIVE_PATH CMAKE_CURRENT_SOURCE_DIR BASE_DIRECTORY ${CMAKE_SOURCE_DIR}/sources
+           OUTPUT_VARIABLE RELATIVE_MODULE_PATH)
 
 set(HEADERS
-        storage/AbstractStorage.h
-        storage/StorageCategory.h
-        storage/StorageContainer.h
-        storage/StorageContainerIndex.h
-        Concepts.h
-        )
+    Concepts.h)
 
-add_library(auxiliary-cpp-common SHARED ${SOURCES} ${HEADERS})
-target_link_libraries(auxiliary-cpp-common Qt6::Core Boost::date_time)
+add_custom_target(${MODULE_TARGET})
 
-install(TARGETS auxiliary-cpp-common LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
-install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR} COMPONENT dev)
+install(FILES ${HEADERS} DESTINATION ${CBS_INCLUDE_INSTALL_PATH}/${RELATIVE_MODULE_PATH} COMPONENT dev)

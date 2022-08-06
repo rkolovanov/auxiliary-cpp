@@ -1,22 +1,21 @@
 /**
- * \proj Библиотека вспомогательных решений С++ (auxiliary-cpp)
+ * \proj Библиотека вспомогательных компонентов С++ (auxiliary-cpp)
  * \file Файл исходного кода MessageDialog.cpp
  *
  * Copyright (c) 2022 Rodion Kolovanov
  */
 
-#include <ui_MessageDialog.h>
+#include "ui_MessageDialog.h"
 #include <auxiliary-cpp/gui/MessageDialog.h>
 
-namespace Auxiliary
+namespace Auxiliary::Gui
 {
-  namespace Gui
+  MessageDialog::MessageDialog(QWidget* parent):
+    QDialog {parent},
+    m_ui {std::make_unique<Ui::MessageDialog>()}
   {
-    MessageDialog::MessageDialog(QWidget* parent):
-      m_ui{std::make_unique<Ui::MessageDialog>()}
-    {
-    }
+    m_ui->setupUi(this);
+  }
 
-    MessageDialog::~MessageDialog() = default;
-  } // namespace Gui
-} // namespace Auxiliary
+  MessageDialog::~MessageDialog() = default;
+} // namespace Auxiliary::Gui

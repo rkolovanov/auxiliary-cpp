@@ -1,3 +1,6 @@
+include(GNUInstallDirs)
+include(cmake/Pack.cmake)
+
 # Boost
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
@@ -12,8 +15,10 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6Core)
-find_package(Qt6Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 
 include_directories(${Qt6Core_INCLUDE_DIRS})
 include_directories(${Qt6Widgets_INCLUDE_DIRS})
+
+# CMakeBuildSystem
+find_package(cmake-build-system)

@@ -6,22 +6,26 @@ project(auxiliary-cpp
         LANGUAGES CXX)
 
 option(WITH_SANDBOX "С песочницей" OFF)
-option(WITH_MANUAL_TESTS "С ручными тестами" OFF)
+option(WITH_MANUAL_TESTS "С ручными тестами" ON)
 option(WITH_TESTS "С тестами" ON)
 
 set(CMAKE_CXX_STANDARD 23)
 set(PROJECT_MODULES common gui math networking)
 
 include(cmake/Libraries.cmake)
-include(GNUInstallDirs)
 
 include_directories(${CMAKE_SOURCE_DIR}/sources)
 
-foreach(MODULE ${PROJECT_MODULES})
-    add_subdirectory(sources/${PROJECT_NAME}/${MODULE})
+add_custom_target(${PROJECT_NAME})
+
+foreach(MODULE_NAME ${PROJECT_MODULES})
+  set(MODULE_TARGET ${PROJECT_NAME}-${MODULE_NAME})
+  add_subdirectory(sources/${PROJECT_NAME}/${MODULE_NAME})
+  add_dependencies(${PROJECT_NAME} ${MODULE_TARGET})
 endforeach()
 
 add_subdirectory(sandbox)
 add_subdirectory(tests)
 
-include(cmake/Pack.cmake)
+add_dependencies(pack-deb ${PROJECT_NAME})
+add_dependencies(pack-rpm ${PROJECT_NAME})

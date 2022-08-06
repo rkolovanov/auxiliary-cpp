@@ -1,3 +1,7 @@
+"""
+    GenerateTestClass script.
+"""
+
 from datetime import datetime
 from string import Template
 
