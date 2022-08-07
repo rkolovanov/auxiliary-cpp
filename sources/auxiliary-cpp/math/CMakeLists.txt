@@ -3,11 +3,10 @@ cmake_path(RELATIVE_PATH CMAKE_CURRENT_SOURCE_DIR
            OUTPUT_VARIABLE RELATIVE_MODULE_PATH)
 
 set(HEADERS
-    geometry/Vector.h
-    geometry/Vector3D.h)
+    Vector3D.h)
 
 set(SOURCES
-    geometry/sources/Vector3D.cpp)
+    sources/Vector3D.cpp)
 
 add_library(${MODULE_TARGET} SHARED ${HEADERS} ${SOURCES})
 set_target_properties(${MODULE_TARGET} PROPERTIES
