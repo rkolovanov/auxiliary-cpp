@@ -9,14 +9,11 @@
 #ifndef SOURCES_AUXILIARY_CPP_MATH_VECTOR2D_H
 #define SOURCES_AUXILIARY_CPP_MATH_VECTOR2D_H
 
-namespace Auxiliary
+namespace Auxiliary::Math
 {
-  namespace Math
+  class Vector2D
   {
-    class Vector2D
-    {
-    }; // class Vector2D
-  } // namespace Math
-} // namespace Auxiliary
+  }; // class Vector2D
+} // namespace Auxiliary::Math
 
 #endif // SOURCES_AUXILIARY_CPP_MATH_VECTOR2D_H
