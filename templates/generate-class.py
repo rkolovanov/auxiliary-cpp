@@ -11,7 +11,7 @@ sourceTemplateFilePath = "class.cpp.template"
 
 projectName = "auxiliary-cpp"
 projectNamespace = "Auxiliary"
-projectDescription = "Библиотека вспомогательных решений С++"
+projectDescription = "Библиотека вспомогательных компонентов С++"
 
 namespaceName = input("Название пространства имен: ")
 className = input("Название класса: ")

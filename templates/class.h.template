@@ -9,14 +9,11 @@
 #ifndef ${header}
 #define ${header}
 
-namespace ${projectNamespace}
+namespace ${projectNamespace}::${namespaceName}
 {
-  namespace ${namespaceName}
+  class ${className}
   {
-    class ${className}
-    {
-    }; // class ${className}
-  } // namespace ${namespaceName}
-} // namespace ${projectNamespace}
+  }; // class ${className}
+} // namespace ${projectNamespace}::${namespaceName}
 
 #endif // ${header}

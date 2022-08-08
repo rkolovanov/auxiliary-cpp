@@ -3,9 +3,11 @@ cmake_path(RELATIVE_PATH CMAKE_CURRENT_SOURCE_DIR
            OUTPUT_VARIABLE RELATIVE_MODULE_PATH)
 
 set(HEADERS
+    Vector2D.h
     Vector3D.h)
 
 set(SOURCES
+    sources/Vector2D.cpp
     sources/Vector3D.cpp)
 
 add_library(${MODULE_TARGET} SHARED ${HEADERS} ${SOURCES})

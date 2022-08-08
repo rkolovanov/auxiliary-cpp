@@ -7,9 +7,6 @@
 
 #include <${classHeaderIncludePath}>
 
-namespace ${projectNamespace}
+namespace ${projectNamespace}::${namespaceName}
 {
-  namespace ${namespaceName}
-  {
-  } // namespace ${namespaceName}
-} // namespace ${projectNamespace}
+} // namespace ${projectNamespace}::${namespaceName}

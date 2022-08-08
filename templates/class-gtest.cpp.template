@@ -9,11 +9,11 @@
 #include <${classHeaderIncludePath}>
 #include <gtest/gtest.h>
 
-using namespace ${projectNamespace}::${namespaceName};
-
-TEST(${testName}, Common)
+namespace ${projectNamespace}::${namespaceName}
 {
-
+  TEST(${testName}, Functional)
+  {
+  }
 }
 
 int main(int argc, char** argv)

@@ -1,5 +1,5 @@
 /**
- * \proj Библиотека вспомогательных решений С++ (auxiliary-cpp)
+ * \proj Библиотека вспомогательных компонентов С++ (auxiliary-cpp)
  * \file Заголовочный файл Vector3D.h
  * \brief Класс Vector3D
  *
@@ -8,8 +8,6 @@
 
 #ifndef SOURCES_AUXILIARY_CPP_MATH_VECTOR3D_H
 #define SOURCES_AUXILIARY_CPP_MATH_VECTOR3D_H
-
-#include <initializer_list>
 
 namespace Auxiliary::Math
 {
