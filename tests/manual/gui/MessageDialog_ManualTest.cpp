@@ -1,5 +1,5 @@
 /**
- * \proj Библиотека вспомогательных решений С++ (auxiliary-cpp)
+ * \proj Библиотека вспомогательных компонентов С++ (auxiliary-cpp)
  * \file Файл исходного кода MessageDialog_ManualTest.cpp
  * \brief Тесты класса MessageDialog
  *
