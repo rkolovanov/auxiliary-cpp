@@ -10,12 +10,11 @@
 #define SOURCES_AUXILIARY_CPP_COMMON_CONCEPTS_H
 
 #include <concepts>
-#include <cstdint>
 
 namespace Auxiliary::Common
 {
   template<typename T>
-  concept UnsignedIntegerConvertable = std::integral<T> && std::convertible_to<T, uint32_t>;
+  concept UnsignedIntegerConvertable = std::integral<T> && std::is_enum_v<T>;
 
   template<typename T>
   concept Number = std::is_arithmetic_v<T>;

@@ -11,8 +11,8 @@
 
 namespace Auxiliary::Math
 {
-  Vector3D vector = {2.0, 4.0, 4.0};
-  Vector3D vector2 = {2.0};
+  Vector3D<> vector = {2.0, 4.0, 4.0};
+  Vector3D<> vector2 = {2.0};
 
   TEST(Vector3D_Test, Components)
   {
@@ -45,12 +45,12 @@ namespace Auxiliary::Math
 
   TEST(Vector3D_Test, Negate)
   {
-    EXPECT_EQ(-vector, Vector3D(-2.0, -4.0, -4.0));
+    EXPECT_EQ(-vector, Vector3D<>(-2.0, -4.0, -4.0));
   }
 
   TEST(Vector3D_Test, Addition)
   {
-    EXPECT_EQ(vector + vector, Vector3D(4.0, 8.0, 8.0));
+    EXPECT_EQ(vector + vector, Vector3D<>(4.0, 8.0, 8.0));
   }
 
   TEST(Vector3D_Test, Subtraction)
@@ -60,12 +60,12 @@ namespace Auxiliary::Math
 
   TEST(Vector3D_Test, ScalarMultiplication)
   {
-    EXPECT_EQ(vector * 2.0, Vector3D(4.0, 8.0, 8.0));
+    EXPECT_EQ(vector * 2.0, Vector3D<>(4.0, 8.0, 8.0));
   }
 
   TEST(Vector3D_Test, ScalarDivision)
   {
-    EXPECT_EQ(vector / 2.0, Vector3D(1.0, 2.0, 2.0));
+    EXPECT_EQ(vector / 2.0, Vector3D<>(1.0, 2.0, 2.0));
   }
 
   TEST(Vector3D_Test, Normalize)
@@ -78,8 +78,8 @@ namespace Auxiliary::Math
 
   TEST(Vector3D_Test, DotProduct)
   {
-    EXPECT_EQ(vector.dot(vector), Vector3D(4.0, 16.0, 16.0));
-    EXPECT_EQ(Vector3D<>::dotProduct(vector, vector), Vector3D(4.0, 16.0, 16.0));
+    EXPECT_EQ(vector.dot(vector), Vector3D<>(4.0, 16.0, 16.0));
+    EXPECT_EQ(Vector3D<>::dotProduct(vector, vector), Vector3D<>(4.0, 16.0, 16.0));
   }
 
   TEST(Vector3D_Test, CrossProduct)

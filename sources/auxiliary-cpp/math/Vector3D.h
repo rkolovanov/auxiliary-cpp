@@ -10,12 +10,15 @@
 #define SOURCES_AUXILIARY_CPP_MATH_VECTOR3D_H
 
 #include <auxiliary-cpp/common/Concepts.h>
+#include <auxiliary-cpp/common/Types.h>
 #include <cmath>
 #include <stdexcept>
 
+using namespace Auxiliary::Common::Types;
+
 namespace Auxiliary::Math
 {
-  template<Common::Number T = double>
+  template<Common::Number T = Real>
   class Vector3D final
   {
   public:
@@ -30,24 +33,24 @@ namespace Auxiliary::Math
     Vector3D(T x, T y, T z);
     ~Vector3D();
 
-    double length() const;
-    double squaredLength() const;
+    Real length() const;
+    Real squaredLength() const;
 
-    bool equal(const Vector3D& vector, double eps = 0.00001) const;
+    bool equal(Vector3D<> vector, Real eps = 0.00001) const;
     bool operator==(const Vector3D& vector) const;
     bool operator!=(const Vector3D& vector) const;
 
     Vector3D operator-() const;
     Vector3D operator+(const Vector3D& vector) const;
     Vector3D operator-(const Vector3D& vector) const;
-    Vector3D operator*(double scalar) const;
-    Vector3D operator/(double scalar) const;
+    Vector3D operator*(Real scalar) const;
+    Vector3D operator/(Real scalar) const;
 
     Vector3D normalize() const;
     Vector3D dot(const Vector3D& vector) const;
     Vector3D cross(const Vector3D& vector) const;
 
-    static bool equal(const Vector3D& left, const Vector3D& right, double eps = 0.00001);
+    static bool equal(const Vector3D& left, const Vector3D& right, Real eps = 0.00001);
     static Vector3D dotProduct(const Vector3D& left, const Vector3D& right);
     static Vector3D crossProduct(const Vector3D& left, const Vector3D& right);
 
@@ -93,19 +96,19 @@ namespace Auxiliary::Math
   Vector3D<T>::~Vector3D() = default;
 
   template<Common::Number T>
-  inline double Vector3D<T>::length() const
+  inline Real Vector3D<T>::length() const
   {
     return sqrt(squaredLength());
   }
 
   template<Common::Number T>
-  inline double Vector3D<T>::squaredLength() const
+  inline Real Vector3D<T>::squaredLength() const
   {
     return x * x + y * y + z * z;
   }
 
   template<Common::Number T>
-  inline bool Vector3D<T>::equal(const Vector3D& vector, double eps) const
+  inline bool Vector3D<T>::equal(Vector3D<> vector, Real eps) const
   {
     return operator-(vector).length() < eps;
   }
@@ -141,26 +144,26 @@ namespace Auxiliary::Math
   }
 
   template<Common::Number T>
-  inline Vector3D<T> Vector3D<T>::operator*(double scalar) const
+  inline Vector3D<T> Vector3D<T>::operator*(Real scalar) const
   {
     return {x * scalar, y * scalar, z * scalar};
   }
 
   template<Common::Number T>
-  inline Vector3D<T> Vector3D<T>::operator/(double scalar) const
+  inline Vector3D<T> Vector3D<T>::operator/(Real scalar) const
   {
     if (scalar == 0.0)
     {
       throw std::domain_error {"Vector3D::operator/ division by zero"};
     }
-    double s = 1.0 / scalar;
+    Real s = 1.0 / scalar;
     return {x * s, y * s, z * s};
   }
 
   template<Common::Number T>
   inline Vector3D<T> Vector3D<T>::normalize() const
   {
-    double l = length();
+    Real l = length();
     if (l == 0.0)
     {
       return Zero;
@@ -183,7 +186,7 @@ namespace Auxiliary::Math
   }
 
   template<Common::Number T>
-  inline bool Vector3D<T>::equal(const Vector3D& left, const Vector3D& right, double eps)
+  inline bool Vector3D<T>::equal(const Vector3D& left, const Vector3D& right, Real eps)
   {
     return left.equal(right, eps);
   }

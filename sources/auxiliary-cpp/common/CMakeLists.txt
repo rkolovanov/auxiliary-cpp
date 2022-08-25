@@ -3,7 +3,8 @@ cmake_path(RELATIVE_PATH CMAKE_CURRENT_SOURCE_DIR
            OUTPUT_VARIABLE RELATIVE_MODULE_PATH)
 
 set(HEADERS
-    Concepts.h)
+    Concepts.h
+    Types.h)
 
 add_custom_target(${MODULE_TARGET})
 set_target_properties(${MODULE_TARGET} PROPERTIES

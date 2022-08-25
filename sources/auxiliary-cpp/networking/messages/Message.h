@@ -10,14 +10,11 @@
 #define SOURCES_AUXILIARY_CPP_NETWORKING_MESSAGES_MESSAGE_H
 
 #include <auxiliary-cpp/common/Concepts.h>
-#include <cstdint>
+#include <auxiliary-cpp/common/Types.h>
 #include <iostream>
 #include <vector>
 
-namespace
-{
-  const uint8_t UnsignedZero = static_cast<uint8_t>(0);
-} // anonymous namespace
+using namespace Auxiliary::Common::Types;
 
 namespace Auxiliary::Networking
 {
@@ -25,10 +22,9 @@ namespace Auxiliary::Networking
 
   struct MessageHeader
   {
-  private:
-    uint8_t marker[4] = {UnsignedZero, UnsignedZero, UnsignedZero, UnsignedZero};
-    uint32_t type = UnsignedZero;
-    uint32_t size = UnsignedZero;
+    Byte marker[4] = {0, 0, 0, 0};
+    Index type = 0;
+    Size size = 0;
   }; // struct MessageHeader
 
 #pragma pack(pop)
@@ -36,8 +32,7 @@ namespace Auxiliary::Networking
   class Message
   {
   public:
-    template<typename T>
-    requires Auxiliary::Common::UnsignedIntegerConvertable<T>
+    template<typename T> requires Auxiliary::Common::UnsignedIntegerConvertable<T>
     void setType(T type);
 
     template<typename DataType>
