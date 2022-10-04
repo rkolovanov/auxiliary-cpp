@@ -10,7 +10,7 @@
 namespace Auxiliary::Networking
 {
   template<typename T>
-  requires Auxiliary::Common::UnsignedIntegerConvertable<T>
+  requires UnsignedIntegerConvertable<T>
   void Message::setType(T type)
   {
     m_header.type = static_cast<uint32_t>(type);

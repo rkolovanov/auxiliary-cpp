@@ -14,11 +14,12 @@
 #include <cmath>
 #include <stdexcept>
 
-using namespace Auxiliary::Common::Types;
-
 namespace Auxiliary::Math
 {
-  template<Common::Number T = Real>
+  using namespace Auxiliary::Common::Concepts;
+  using namespace Auxiliary::Common::Types;
+
+  template<Number T = Real>
   class Vector2D final
   {
   public:
@@ -59,88 +60,88 @@ namespace Auxiliary::Math
 
 namespace Auxiliary::Math
 {
-  template<Common::Number T>
+  template<Number T>
   const Vector2D<T> Vector2D<T>::Zero = {0, 0};
 
-  template<Common::Number T>
+  template<Number T>
   const Vector2D<T> Vector2D<T>::UnitX = {1, 0};
 
-  template<Common::Number T>
+  template<Number T>
   const Vector2D<T> Vector2D<T>::UnitY = {0, 1};
 
-  template<Common::Number T>
+  template<Number T>
   Vector2D<T>::Vector2D() = default;
 
-  template<Common::Number T>
+  template<Number T>
   Vector2D<T>::Vector2D(T x, T y):
     x {x},
     y {y}
   {}
 
-  template<Common::Number T>
+  template<Number T>
   Vector2D<T>::Vector2D(T v):
     x {v},
     y {v}
   {}
 
-  template<Common::Number T>
+  template<Number T>
   Vector2D<T>::~Vector2D() = default;
 
-  template<Common::Number T>
+  template<Number T>
   inline Real Vector2D<T>::length() const
   {
     return sqrt(squaredLength());
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Real Vector2D<T>::squaredLength() const
   {
     return x * x + y * y;
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline bool Vector2D<T>::equal(const Vector2D& vector, Real eps) const
   {
     return operator-(vector).length() < eps;
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline bool Vector2D<T>::operator==(const Vector2D& vector) const
   {
     return equal(vector);
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline bool Vector2D<T>::operator!=(const Vector2D& vector) const
   {
     return !equal(vector);
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector2D<T> Vector2D<T>::operator-() const
   {
     return {-x, -y};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector2D<T> Vector2D<T>::operator+(const Vector2D& vector) const
   {
     return {x + vector.x, y + vector.y};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector2D<T> Vector2D<T>::operator-(const Vector2D& vector) const
   {
     return {x - vector.x, y - vector.y};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector2D<T> Vector2D<T>::operator*(Real scalar) const
   {
     return {x * scalar, y * scalar};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector2D<T> Vector2D<T>::operator/(Real scalar) const
   {
     if (scalar == 0.0)
@@ -151,7 +152,7 @@ namespace Auxiliary::Math
     return {x * s, y * s};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector2D<T> Vector2D<T>::normalize() const
   {
     Real l = length();
@@ -159,22 +160,23 @@ namespace Auxiliary::Math
     {
       return Zero;
     }
-    return {x / l, y / l};
+    Real s = 1.0 / l;
+    return {x * s, y * s};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector2D<T> Vector2D<T>::dot(const Vector2D& vector) const
   {
     return {x * vector.x, y * vector.y};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline bool Vector2D<T>::equal(const Vector2D& left, const Vector2D& right, Real eps)
   {
     return left.equal(right, eps);
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector2D<T> Vector2D<T>::dotProduct(const Vector2D& left, const Vector2D& right)
   {
     return left.dot(right);

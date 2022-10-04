@@ -4,7 +4,7 @@ cmake_path(RELATIVE_PATH CMAKE_CURRENT_SOURCE_DIR
 
 set(HEADERS
     Vector2D.h
-    Vector3D.h)
+    Vector3D.h Vector4D.h)
 
 set(SOURCES
     )

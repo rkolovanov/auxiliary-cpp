@@ -11,7 +11,7 @@
 
 #include <concepts>
 
-namespace Auxiliary::Common
+namespace Auxiliary::Common::Concepts
 {
   template<typename T>
   concept UnsignedIntegerConvertable = std::integral<T> && std::is_enum_v<T>;

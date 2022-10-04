@@ -16,17 +16,17 @@ namespace Auxiliary::Math
 
   TEST(Vector3D_Test, Components)
   {
-    EXPECT_EQ(vector.x, 3.0);
-    EXPECT_EQ(vector.y, 4.0);
+    EXPECT_FLOAT_EQ(vector.x, 3.0);
+    EXPECT_FLOAT_EQ(vector.y, 4.0);
 
-    EXPECT_EQ(vector2.x, 2.0);
-    EXPECT_EQ(vector2.y, 2.0);
+    EXPECT_FLOAT_EQ(vector2.x, 2.0);
+    EXPECT_FLOAT_EQ(vector2.y, 2.0);
   }
 
   TEST(Vector3D_Test, Length)
   {
-    EXPECT_EQ(vector.length(), 5.0);
-    EXPECT_EQ(vector.squaredLength(), 25.0);
+    EXPECT_FLOAT_EQ(vector.length(), sqrt(vector.squaredLength()));
+    EXPECT_FLOAT_EQ(vector.squaredLength(), 25.0);
   }
 
   TEST(Vector3D_Test, Equal)
@@ -69,7 +69,7 @@ namespace Auxiliary::Math
   TEST(Vector3D_Test, Normalize)
   {
     const auto normalizedVector = vector.normalize();
-    EXPECT_EQ(normalizedVector.length(), 1.0);
+    EXPECT_FLOAT_EQ(normalizedVector.length(), 1.0);
     EXPECT_TRUE(vector.x / normalizedVector.x == vector.y / normalizedVector.y);
   }
 

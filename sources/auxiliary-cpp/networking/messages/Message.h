@@ -14,10 +14,11 @@
 #include <iostream>
 #include <vector>
 
-using namespace Auxiliary::Common::Types;
-
 namespace Auxiliary::Networking
 {
+  using namespace Auxiliary::Common::Concepts;
+  using namespace Auxiliary::Common::Types;
+
 #pragma pack(push, 1)
 
   struct MessageHeader
@@ -32,7 +33,7 @@ namespace Auxiliary::Networking
   class Message
   {
   public:
-    template<typename T> requires Auxiliary::Common::UnsignedIntegerConvertable<T>
+    template<typename T> requires UnsignedIntegerConvertable<T>
     void setType(T type);
 
     template<typename DataType>

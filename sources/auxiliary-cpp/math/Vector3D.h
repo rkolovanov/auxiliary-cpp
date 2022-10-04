@@ -14,11 +14,12 @@
 #include <cmath>
 #include <stdexcept>
 
-using namespace Auxiliary::Common::Types;
-
 namespace Auxiliary::Math
 {
-  template<Common::Number T = Real>
+  using namespace Auxiliary::Common::Concepts;
+  using namespace Auxiliary::Common::Types;
+
+  template<Number T = Real>
   class Vector3D final
   {
   public:
@@ -36,7 +37,7 @@ namespace Auxiliary::Math
     Real length() const;
     Real squaredLength() const;
 
-    bool equal(Vector3D<> vector, Real eps = 0.00001) const;
+    bool equal(const Vector3D& vector, Real eps = 0.00001) const;
     bool operator==(const Vector3D& vector) const;
     bool operator!=(const Vector3D& vector) const;
 
@@ -63,93 +64,93 @@ namespace Auxiliary::Math
 
 namespace Auxiliary::Math
 {
-  template<Common::Number T>
+  template<Number T>
   const Vector3D<T> Vector3D<T>::Zero = {0, 0, 0};
 
-  template<Common::Number T>
+  template<Number T>
   const Vector3D<T> Vector3D<T>::UnitX = {1, 0, 0};
 
-  template<Common::Number T>
+  template<Number T>
   const Vector3D<T> Vector3D<T>::UnitY = {0, 1, 0};
 
-  template<Common::Number T>
+  template<Number T>
   const Vector3D<T> Vector3D<T>::UnitZ = {0, 0, 1};
 
-  template<Common::Number T>
+  template<Number T>
   Vector3D<T>::Vector3D() = default;
 
-  template<Common::Number T>
+  template<Number T>
   Vector3D<T>::Vector3D(T v):
     x {v},
     y {v},
     z {v}
   {}
 
-  template<Common::Number T>
+  template<Number T>
   Vector3D<T>::Vector3D(T x, T y, T z):
     x {x},
     y {y},
     z {z}
   {}
 
-  template<Common::Number T>
+  template<Number T>
   Vector3D<T>::~Vector3D() = default;
 
-  template<Common::Number T>
+  template<Number T>
   inline Real Vector3D<T>::length() const
   {
     return sqrt(squaredLength());
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Real Vector3D<T>::squaredLength() const
   {
     return x * x + y * y + z * z;
   }
 
-  template<Common::Number T>
-  inline bool Vector3D<T>::equal(Vector3D<> vector, Real eps) const
+  template<Number T>
+  inline bool Vector3D<T>::equal(const Vector3D& vector, Real eps) const
   {
     return operator-(vector).length() < eps;
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline bool Vector3D<T>::operator==(const Vector3D& vector) const
   {
     return equal(vector);
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline bool Vector3D<T>::operator!=(const Vector3D& vector) const
   {
     return !equal(vector);
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::operator-() const
   {
     return {-x, -y, -z};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::operator+(const Vector3D& vector) const
   {
     return {x + vector.x, y + vector.y, z + vector.z};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::operator-(const Vector3D& vector) const
   {
     return {x - vector.x, y - vector.y, z - vector.z};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::operator*(Real scalar) const
   {
     return {x * scalar, y * scalar, z * scalar};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::operator/(Real scalar) const
   {
     if (scalar == 0.0)
@@ -160,7 +161,7 @@ namespace Auxiliary::Math
     return {x * s, y * s, z * s};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::normalize() const
   {
     Real l = length();
@@ -168,16 +169,17 @@ namespace Auxiliary::Math
     {
       return Zero;
     }
-    return {x / l, y / l, z / l};
+    Real s = 1.0 / l;
+    return {x * s, y * s, z * s};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::dot(const Vector3D& vector) const
   {
     return {x * vector.x, y * vector.y, z * vector.z};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::cross(const Vector3D& vector) const
   {
     return {y * vector.z - vector.y * z,
@@ -185,19 +187,19 @@ namespace Auxiliary::Math
             x * vector.y - vector.x * y};
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline bool Vector3D<T>::equal(const Vector3D& left, const Vector3D& right, Real eps)
   {
     return left.equal(right, eps);
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::dotProduct(const Vector3D& left, const Vector3D& right)
   {
     return left.dot(right);
   }
 
-  template<Common::Number T>
+  template<Number T>
   inline Vector3D<T> Vector3D<T>::crossProduct(const Vector3D& left, const Vector3D& right)
   {
     return left.cross(right);
