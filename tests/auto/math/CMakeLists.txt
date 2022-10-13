@@ -1,3 +1,7 @@
+add_executable(Matrix4x4_Test Matrix4x4_Test.cpp)
+target_link_libraries(Matrix4x4_Test gtest auxiliary-cpp-math)
+add_test(NAME Matrix4x4_Test COMMAND Matrix4x4_Test)
+
 add_executable(Vector2D_Test Vector2D_Test.cpp)
 target_link_libraries(Vector2D_Test gtest auxiliary-cpp-math)
 add_test(NAME Vector2D_Test COMMAND Vector2D_Test)

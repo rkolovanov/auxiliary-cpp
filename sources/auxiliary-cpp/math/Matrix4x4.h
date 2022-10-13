@@ -13,6 +13,7 @@
 #include <auxiliary-cpp/math/Vector3D.h>
 #include <auxiliary-cpp/math/Vector4D.h>
 #include <array>
+#include <functional>
 
 namespace Auxiliary::Math
 {
@@ -24,12 +25,12 @@ namespace Auxiliary::Math
   public:
     static const Size8 Rows;
     static const Size8 Columns;
+    static const Matrix4x4 Zero;
+    static const Matrix4x4 Identity;
 
   public:
-    static Matrix4x4<T> Diagonal(T value);
-    static Matrix4x4<T> Constant(T value);
-    static Matrix4x4<T> Zero();
-    static Matrix4x4<T> Identity();
+    static Matrix4x4 Diagonal(T value);
+    static Matrix4x4 Constant(T value);
     // TODO: Other basic Matrix4x4
 
   public:
@@ -41,27 +42,42 @@ namespace Auxiliary::Math
     Vector4D<T> getRow(Index8 index) const;
     Vector4D<T> getColumn(Index8 index) const;
 
-    // TODO: negate method
-    Matrix4x4<T> operator+(const Matrix4x4<T>& matrix) const;
-    // TODO: operator-
-    Matrix4x4<T> operator*(const Matrix4x4<T>& matrix) const;
+    // TODO: Matrix4x4 negate() const;
+    // TODO: Matrix4x4 inverse() const;
+
+    Matrix4x4 operator+(const Matrix4x4& matrix) const;
+    // TODO: Matrix4x4 operator+=(const Matrix4x4& matrix);
+    // TODO: Matrix4x4 operator-(const Matrix4x4& matrix) const;
+    // TODO: Matrix4x4 operator-=(const Matrix4x4& matrix);
+    Matrix4x4 operator*(const Matrix4x4& matrix) const;
+    // TODO: Matrix4x4 operator*=(const Matrix4x4& matrix);
     Vector4D<T> operator*(const Vector4D<T>& vector) const;
-    Matrix4x4<T> operator*(T value) const;
+    Matrix4x4 operator*(T value) const;
+    // TODO: Matrix4x4 operator*=(T value);
+    // TODO: Matrix4x4 operator/(T value) const;
+    // TODO: Matrix4x4 operator/=(T value);
 
-    // TODO: compare methods
+    // TODO: Matrix4x4 operator==(const Matrix4x4& matrix) const;
+    // TODO: Matrix4x4 operator!=(const Matrix4x4& matrix) const;
 
-    T operator[](Size8 i, Size8 j) const;
-    T& operator[](Size8 i, Size8 j);
+    using ForAllElementsFunction = std::function<void(Size8, Size8, T&)>;
+    void forAllElements(const ForAllElementsFunction& function);
 
   private:
     std::array<std::array<T, Columns>, Rows> m_data {};
   }; // class Matrix
 
   template<Number T>
-  const Size8 Matrix4x4<T>::Rows = 8;
+  const Size8 Matrix4x4<T>::Rows = 4;
 
   template<Number T>
-  const Size8 Matrix4x4<T>::Columns = 8;
+  const Size8 Matrix4x4<T>::Columns = 4;
+
+  template<Number T>
+  const Matrix4x4<T> Matrix4x4<T>::Zero = Matrix4x4<T>(0);
+
+  template<Number T>
+  const Matrix4x4<T> Matrix4x4<T>::Identity = Matrix4x4<T>::Diagonal(1);
 
   template<Number T>
   inline Matrix4x4<T> Matrix4x4<T>::Diagonal(T value)
@@ -70,7 +86,7 @@ namespace Auxiliary::Math
 
     for (int i = 0; i < Rows && i < Columns; ++i)
     {
-      m[i, i] = value;
+      m.m_data[i][i] = value;
     }
 
     return m;
@@ -80,18 +96,6 @@ namespace Auxiliary::Math
   inline Matrix4x4<T> Matrix4x4<T>::Constant(T value)
   {
     return Matrix4x4<T>(value);
-  }
-
-  template<Number T>
-  inline Matrix4x4<T> Matrix4x4<T>::Zero()
-  {
-    return Constant(0);
-  }
-
-  template<Number T>
-  inline Matrix4x4<T> Matrix4x4<T>::Identity()
-  {
-    return Diagonal(1);
   }
 
   template<Number T>
@@ -171,7 +175,7 @@ namespace Auxiliary::Math
     {
       for (int j = 0; j < Columns; ++j)
       {
-        result[i, j] = m_data[i][j] + matrix[i, j];
+        result.m_data[i][j] = m_data[i][j] + matrix.m_data[i][j];
       }
     }
 
@@ -181,13 +185,13 @@ namespace Auxiliary::Math
   template<Number T>
   Matrix4x4<T> Matrix4x4<T>::operator*(const Matrix4x4<T>& matrix) const
   {
-    auto result = Zero();
+    auto result = Zero;
 
     for (int i = 0; i < Rows; ++i)
     {
       for (int j = 0; j < Columns; ++j)
       {
-        result[i, j] += m_data[i][j] * matrix[j, i];
+        result.m_data[i][j] += m_data[i][j] * matrix.m_data[j][i];
       }
     }
 
@@ -219,7 +223,7 @@ namespace Auxiliary::Math
     {
       for (int j = 0; j < Columns; ++j)
       {
-        result[i, j] = m_data[i][j] * value;
+        result.m_data[i][j] = m_data[i][j] * value;
       }
     }
 
@@ -227,15 +231,15 @@ namespace Auxiliary::Math
   }
 
   template<Number T>
-  inline T Matrix4x4<T>::operator[](Size8 row, Size8 column) const
+  inline void Matrix4x4<T>::forAllElements(const Matrix4x4::ForAllElementsFunction& function)
   {
-    return get(row, column);
-  }
-
-  template<Number T>
-  inline T& Matrix4x4<T>::operator[](Size8 row, Size8 column)
-  {
-    return get(row, column);
+    for (int i = 0; i < Rows; ++i)
+    {
+      for (int j = 0; j < Columns; ++j)
+      {
+        function(i, j, m_data[i][j]);
+      }
+    }
   }
 } // namespace Auxiliary::Math
 
