@@ -56,9 +56,9 @@ namespace Auxiliary::Math
     static Vector3D crossProduct(const Vector3D& left, const Vector3D& right);
 
   public:
-    T x;
-    T y;
-    T z;
+    T x {0};
+    T y {0};
+    T z {0};
   }; // class Vector3D
 } // namespace Auxiliary::Math
 

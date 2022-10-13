@@ -53,10 +53,10 @@ namespace Auxiliary::Math
     static bool equal(const Vector4D& left, const Vector4D& right, Real eps = 0.00001);
 
   public:
-    T x;
-    T y;
-    T z;
-    T w;
+    T x {0};
+    T y {0};
+    T z {0};
+    T w {0};
   }; // class Vector4D
 } // namespace Auxiliary::Math
 

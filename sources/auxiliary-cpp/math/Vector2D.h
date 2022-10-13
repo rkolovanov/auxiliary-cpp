@@ -53,8 +53,8 @@ namespace Auxiliary::Math
     static Vector2D dotProduct(const Vector2D& left, const Vector2D& right);
 
   public:
-    T x;
-    T y;
+    T x {0};
+    T y {0};
   }; // class Vector2D
 } // namespace Auxiliary::Math
 

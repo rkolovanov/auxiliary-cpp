@@ -3,8 +3,10 @@ cmake_path(RELATIVE_PATH CMAKE_CURRENT_SOURCE_DIR
            OUTPUT_VARIABLE RELATIVE_MODULE_PATH)
 
 set(HEADERS
+    Matrix4x4.h
     Vector2D.h
-    Vector3D.h Vector4D.h)
+    Vector3D.h
+    Vector4D.h)
 
 set(SOURCES
     )
