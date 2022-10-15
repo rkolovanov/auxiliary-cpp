@@ -31,6 +31,9 @@ namespace Auxiliary::Math
   public:
     static Matrix4x4 Diagonal(T value);
     static Matrix4x4 Constant(T value);
+    static Matrix4x4 Displacement(const Vector3D<T>& delta);
+    // TODO: static Matrix4x4 Rotate(const Vector3D<T>& rotator);
+    static Matrix4x4 Scale(const Vector3D<T>& factor);
     // TODO: Other basic Matrix4x4
 
   public:
@@ -60,9 +63,6 @@ namespace Auxiliary::Math
     // TODO: Matrix4x4 operator==(const Matrix4x4& matrix) const;
     // TODO: Matrix4x4 operator!=(const Matrix4x4& matrix) const;
 
-    using ForAllElementsFunction = std::function<void(Size8, Size8, T&)>;
-    void forAllElements(const ForAllElementsFunction& function);
-
   private:
     std::array<std::array<T, Columns>, Rows> m_data {};
   }; // class Matrix
@@ -84,7 +84,7 @@ namespace Auxiliary::Math
   {
     Matrix4x4<T> m;
 
-    for (int i = 0; i < Rows && i < Columns; ++i)
+    for (Index16 i = 0; i < Rows && i < Columns; ++i)
     {
       m.m_data[i][i] = value;
     }
@@ -99,12 +99,36 @@ namespace Auxiliary::Math
   }
 
   template<Number T>
+  inline Matrix4x4<T> Matrix4x4<T>::Displacement(const Vector3D<T>& delta)
+  {
+    const auto result = Matrix4x4<T>::Identity;
+
+    result.m_data[0][3] = delta.x;
+    result.m_data[1][3] = delta.y;
+    result.m_data[2][3] = delta.z;
+
+    return Matrix4x4();
+  }
+
+  template<Number T>
+  inline Matrix4x4<T> Matrix4x4<T>::Scale(const Vector3D<T>& factor)
+  {
+    const auto result = Matrix4x4<T>::Identity;
+
+    result.m_data[0][0] = factor.x;
+    result.m_data[1][1] = factor.y;
+    result.m_data[2][2] = factor.z;
+
+    return Matrix4x4();
+  }
+
+  template<Number T>
   Matrix4x4<T>::Matrix4x4() = default;
 
   template<Number T>
   Matrix4x4<T>::Matrix4x4(T value)
   {
-    for (int i = 0; i < Rows; ++i)
+    for (Index16 i = 0; i < Rows; ++i)
     {
       m_data[i].fill(value);
     }
@@ -140,7 +164,7 @@ namespace Auxiliary::Math
 
     Vector4D<T> row;
 
-    for (int i = 0; i < Columns; ++i)
+    for (Index16 i = 0; i < Columns; ++i)
     {
       row[i] = m_data[index][i];
     }
@@ -158,7 +182,7 @@ namespace Auxiliary::Math
 
     Vector4D<T> column;
 
-    for (int i = 0; i < Rows; ++i)
+    for (Index16 i = 0; i < Rows; ++i)
     {
       column[i] = m_data[i][index];
     }
@@ -171,9 +195,9 @@ namespace Auxiliary::Math
   {
     Matrix4x4<T> result;
 
-    for (int i = 0; i < Rows; ++i)
+    for (Index16 i = 0; i < Rows; ++i)
     {
-      for (int j = 0; j < Columns; ++j)
+      for (Index16 j = 0; j < Columns; ++j)
       {
         result.m_data[i][j] = m_data[i][j] + matrix.m_data[i][j];
       }
@@ -187,11 +211,14 @@ namespace Auxiliary::Math
   {
     auto result = Zero;
 
-    for (int i = 0; i < Rows; ++i)
+    for (Index16 i = 0; i < Rows; ++i)
     {
-      for (int j = 0; j < Columns; ++j)
+      for (Index16 j = 0; j < Columns; ++j)
       {
-        result.m_data[i][j] += m_data[i][j] * matrix.m_data[j][i];
+        for (Index16 k = 0; k < Rows; ++k)
+        {
+          result.m_data[i][j] += m_data[i][k] * matrix.m_data[k][j];
+        }
       }
     }
 
@@ -201,15 +228,12 @@ namespace Auxiliary::Math
   template<Number T>
   Vector4D<T> Matrix4x4<T>::operator*(const Vector4D<T>& vector) const
   {
-    auto result = Vector4D<T>::Zero;
+    Vector4D<T> result;
 
-    for (int i = 0; i < Rows; ++i)
-    {
-      for (int j = 0; j < Columns; ++j)
-      {
-        result[i] += m_data[i][j] * vector[j];
-      }
-    }
+    result.x = m_data[0][0] * vector.x + m_data[0][1] * vector.y + m_data[0][2] * vector.z + m_data[0][3] * vector.w;
+    result.y = m_data[1][0] * vector.x + m_data[1][1] * vector.y + m_data[1][2] * vector.z + m_data[1][3] * vector.w;
+    result.z = m_data[2][0] * vector.x + m_data[2][1] * vector.y + m_data[2][2] * vector.z + m_data[2][3] * vector.w;
+    result.w = m_data[3][0] * vector.x + m_data[3][1] * vector.y + m_data[3][2] * vector.z + m_data[3][3] * vector.w;
 
     return result;
   }
@@ -219,27 +243,15 @@ namespace Auxiliary::Math
   {
     Matrix4x4<T> result;
 
-    for (int i = 0; i < Rows; ++i)
+    for (Index16 i = 0; i < Rows; ++i)
     {
-      for (int j = 0; j < Columns; ++j)
+      for (Index16 j = 0; j < Columns; ++j)
       {
         result.m_data[i][j] = m_data[i][j] * value;
       }
     }
 
     return result;
-  }
-
-  template<Number T>
-  inline void Matrix4x4<T>::forAllElements(const Matrix4x4::ForAllElementsFunction& function)
-  {
-    for (int i = 0; i < Rows; ++i)
-    {
-      for (int j = 0; j < Columns; ++j)
-      {
-        function(i, j, m_data[i][j]);
-      }
-    }
   }
 } // namespace Auxiliary::Math
 
