@@ -1,0 +1,37 @@
+# auxiliary-cpp configuration
+
+find_library(auxiliary-cpp_MATH_LIBRARY
+    NAMES auxiliary-cpp-math auxiliary-cpp-math-debug
+    PATHS /usr/lib /usr/lib/x86_64-linux-gnu
+    NO_DEFAULT_PATH
+)
+
+find_library(auxiliary-cpp_GUI_LIBRARY
+    NAMES auxiliary-cpp-gui auxiliary-cpp-gui-debug
+    PATHS /usr/lib /usr/lib/x86_64-linux-gnu
+    NO_DEFAULT_PATH
+)
+
+find_library(auxiliary-cpp_NETWORKING_LIBRARY
+    NAMES auxiliary-cpp-networking auxiliary-cpp-networking-debug
+    PATHS /usr/lib /usr/lib/x86_64-linux-gnu
+    NO_DEFAULT_PATH
+)
+
+find_path(auxiliary-cpp_INCLUDE_DIR /commonTypes.h
+    PATHS /usr/include/auxiliary-cpp
+    NO_DEFAULT_PATH
+)
+set(auxiliary-cpp_INCLUDE_DIRS ${auxiliary-cpp_INCLUDE_DIR})
+set(auxiliary-cpp_LIBRARIES ${auxiliary-cpp_MATH_LIBRARY} ${auxiliary-cpp_GUI_LIBRARY} ${auxiliary-cpp_NETWORKING_LIBRARY})
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(auxiliary-cpp
+    REQUIRED_VARS
+    auxiliary-cpp_MATH_LIBRARY
+    auxiliary-cpp_GUI_LIBRARY
+    auxiliary-cpp_NETWORKING_LIBRARY
+    auxiliary-cpp_INCLUDE_DIRS
+    auxiliary-cpp_LIBRARIES
+    FOUND_VAR auxiliary-cpp_FOUND
+)
