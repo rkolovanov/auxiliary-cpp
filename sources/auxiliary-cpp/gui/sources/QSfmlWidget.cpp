@@ -38,11 +38,6 @@ namespace Auxiliary::Gui
     return nullptr;
   }
 
-  void QSfmlWidget::enterEvent(QEnterEvent*)
-  {
-    setFocus();
-  }
-
   void QSfmlWidget::resizeEvent(QResizeEvent* event)
   {
     m_window.create(static_cast<sf::WindowHandle>(winId()));

@@ -11,9 +11,9 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 
 # Find libraries
-find_package(cmake-build-system 0.0.2 REQUIRED)
-find_package(Boost 1.74.0 COMPONENTS chrono thread REQUIRED)
-find_package(Qt6 6.2.4 COMPONENTS Core Widgets REQUIRED)
+find_package(cmake-build-system 0.0.3 REQUIRED)
+find_package(Boost 1.73.0 COMPONENTS chrono thread REQUIRED)
+find_package(Qt5 5.15.2 COMPONENTS Core Widgets REQUIRED)
 find_package(SFML 2.5.1 COMPONENTS system graphics window REQUIRED)
 
 if(WITH_TESTS)

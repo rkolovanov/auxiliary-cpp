@@ -9,7 +9,7 @@ option(WITH_SANDBOX "С песочницей" OFF)
 option(WITH_MANUAL_TESTS "С ручными тестами" ON)
 option(WITH_TESTS "С тестами" ON)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/sources)
 set(PROJECT_MODULES common gui math networking)
 

@@ -19,7 +19,7 @@ set_target_properties(${MODULE_TARGET} PROPERTIES
                       VERSION ${PROJECT_VERSION}
                       SOVERSION ${PROJECT_VERSION_MAJOR}
                       DEBUG_POSTFIX -debug)
-target_link_libraries(${MODULE_TARGET} PRIVATE Qt6::Widgets)
+target_link_libraries(${MODULE_TARGET} PRIVATE Qt5::Widgets)
 
 install(TARGETS ${MODULE_TARGET}
         LIBRARY

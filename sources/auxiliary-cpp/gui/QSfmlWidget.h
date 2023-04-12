@@ -11,6 +11,7 @@
 
 #include <QTimer>
 #include <QWidget>
+#include <QEnterEvent>
 #include <SFML/Graphics.hpp>
 
 namespace Auxiliary::Gui
@@ -31,7 +32,6 @@ namespace Auxiliary::Gui
 
   private:
     QPaintEngine* paintEngine() const override;
-    void enterEvent(QEnterEvent*) override;
     void resizeEvent(QResizeEvent* event) override;
 
   protected:
